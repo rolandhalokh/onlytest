@@ -1,19 +1,27 @@
-def workspace
 node {
-   stage('Checkout') {
-       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '28a55c1b-a759-40d8-a6f6-bea6115087ab', url: 'git@github.com:rolandhalokh/onlytest.git']]])
-       workspace = pwd()
-   }
-   stage('Static Code Analysis') {
-       echo "Static Code Analysis step"
-   }
-   stage('Build') {
-       echo "Build the code"
-   }
-   stage('Unit Testing') {
-       echo "Unit testing step.."
-   }
-   stage('Delivery') {
-       echo "Devivering the code"
-   }
+    try {
+        stage('Test') {
+            sh 'echo "Fail!"; exit 1'
+        }
+        echo 'This will run only if successful'
+    } catch (e) {
+        echo 'This will run only if failed'
+
+        // Since we're catching the exception in order to report on it,
+        // we need to re-throw it, to ensure that the build is marked as failed
+        throw e
+    } finally {
+        def currentResult = currentBuild.result ?: 'SUCCESS'
+        if (currentResult == 'UNSTABLE') {
+            echo 'This will run only if the run was marked as unstable'
+        }
+
+        def previousResult = currentBuild.previousBuild?.result
+        if (previousResult != null && previousResult != currentResult) {
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+
+        echo 'This will always run'
+    }
 }
