@@ -1,27 +1,53 @@
+#!/usr/bin/env groovy
+ 
+/**
+        * Sample Jenkinsfile for Jenkins2 Pipeline
+        * from https://github.com/hotwilson/jenkins2/edit/master/Jenkinsfile
+        * by wilsonmar@gmail.com 
+ */
+ 
+import hudson.model.*
+import hudson.EnvVars
+import groovy.json.JsonSlurperClassic
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import java.net.URL
+ 
+try {
 node {
-    try {
-        stage('Test') {
-            sh 'echo "Sucessfuls sh script"; exit 0'
-        }
-        echo 'This will run only if successful'
-    } catch (e) {
-        echo 'This will run only if failed'
-
-        // Since we're catching the exception in order to report on it,
-        // we need to re-throw it, to ensure that the build is marked as failed
-        throw e
-    } finally {
-        def currentResult = currentBuild.result ?: 'SUCCESS'
-        if (currentResult == 'UNSTABLE') {
-            echo 'This will run only if the run was marked as unstable'
-        }
-
-        def previousResult = currentBuild.previousBuild?.result
-        if (previousResult != null && previousResult != currentResult) {
-            echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
-        }
-
-        echo 'This will always run'
-    }
+stage '\u2776 Stage 1'
+echo "\u2600 BUILD_URL=${env.BUILD_URL}"
+ 
+def workspace = pwd()
+echo "\u2600 workspace=${workspace}"
+ 
+stage '\u2777 Stage 2'
+} // node
+} // try end
+catch (exc) {
+/*
+ err = caughtError
+ currentBuild.result = "FAILURE"
+ String recipient = 'infra@lists.jenkins-ci.org'
+ mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
+         body: "It appears that ${env.BUILD_URL} is failing, somebody should do something about that",
+           to: recipient,
+      replyTo: recipient,
+ from: 'noreply@ci.jenkins.io'
+*/
+} finally {
+  
+ (currentBuild.result != "ABORTED") && node("master") {
+     // Send e-mail notifications for failed or unstable builds.
+     // currentBuild.result must be non-null for this step to work.
+     step([$class: 'Mailer',
+        notifyEveryUnstableBuild: true,
+        recipients: "${email_to}",
+        sendToIndividuals: true])
+ }
+ 
+ // Must re-throw exception to propagate error:
+ if (err) {
+     throw err
+ }
 }
