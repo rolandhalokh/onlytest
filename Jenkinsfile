@@ -6,16 +6,14 @@ node {
    stage ('SecondStage') {
        echo 'Inside of Second Stage!!!'
        stage('run-parallel-branches') {
-          steps {
-            parallel(
-              a: {
-                echo "This is branch a"
-              },
-              b: {
-                echo "This is branch b"
-              }
-            )
-          }
+         parallel(
+           a: {
+             echo "This is branch a"
+           },
+           b: {
+             echo "This is branch b"
+           }
+         )
       }
    }
 }
