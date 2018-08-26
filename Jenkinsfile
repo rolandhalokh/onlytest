@@ -1,6 +1,6 @@
 node {
    stage ('checkout SCM') {
-        echo 'Get the F code!!!!'
+        echo 'Get the code!!!!'
         git 'https://github.com/brentlaster/gradle-greetings.git'
    }
    stage ('SecondStage') {
