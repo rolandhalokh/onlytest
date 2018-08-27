@@ -3,7 +3,7 @@ node {
         echo 'Get the code!!!!'
         git 'https://github.com/rolandhalokh/onlytest.git'
    }
-   stage ('SecondStage') {
+   stage ('Test and Deploy') {
        echo 'Inside of Second Stage!!!'
        stage('run-parallel-branches') {
          parallel(
@@ -15,6 +15,10 @@ node {
              sh './script.sh'
            }
          )
+       input 'Continue to next stage?'
+       }
+       stage('Deployment stage!') {
+         echo "Lets DEPLOY!"
       }
    }
 }
