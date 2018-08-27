@@ -14,6 +14,7 @@ node {
                 echo "done"
              }}
            }
+       parallel stepsToRun
        }
        input 'Do you want to deploy?'  
    }
