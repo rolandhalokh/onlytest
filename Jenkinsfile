@@ -12,6 +12,7 @@ node {
            },
            b: {
              echo "This is branch b"
+             sh "script.sh"
            }
          )
       }
