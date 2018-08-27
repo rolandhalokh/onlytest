@@ -8,7 +8,7 @@ node {
        stage('run-parallel-branches') {
           echo "This is branch a"
           echo "This is branch b"
-          sh "script.sh"
+          sh './script.sh'
         }
    }
 }
