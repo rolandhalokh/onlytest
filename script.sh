@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "this is the script..."
+echo "The latest script!!"
+echo "Super excited for the WebHook!!"
