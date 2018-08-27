@@ -1,7 +1,7 @@
 node {
    stage ('checkout SCM') {
         echo 'Get the code!!!!'
-        git 'https://github.com/brentlaster/gradle-greetings.git'
+        git 'https://github.com/rolandhalokh/onlytest.git'
    }
    stage ('SecondStage') {
        echo 'Inside of Second Stage!!!'
