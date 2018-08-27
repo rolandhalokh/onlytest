@@ -16,8 +16,8 @@ node {
            }
          )
        }
+       input 'Do you want to deploy?'  
    }
-   input 'Do you want to deploy?'
    stage('Deployment stage!') {
          echo "Lets DEPLOY!"
    }
