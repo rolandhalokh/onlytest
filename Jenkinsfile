@@ -6,15 +6,14 @@ node {
    stage ('Test and Deploy') {
        echo 'Inside of Second Stage!!!'
        stage('run-parallel-branches') {
-         parallel(
-           a: {
-             echo "This is branch a"
-           },
-           b: {
-             echo "This is branch b"
-             sh './script.sh'
+           def stepsToRun = [:]
+           for (int i = 1; i < 5; i++) {
+             stepsToRun["Step${i}"] = { node {
+                echo "start"
+                sleep 5
+                echo "done"
+             }}
            }
-         )
        }
        input 'Do you want to deploy?'  
    }
