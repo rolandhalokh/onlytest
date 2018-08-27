@@ -15,10 +15,10 @@ node {
              sh './script.sh'
            }
          )
-       input 'Continue to next stage?'
        }
-       stage('Deployment stage!') {
+   }
+   input 'Do you want to deploy?'
+   stage('Deployment stage!') {
          echo "Lets DEPLOY!"
-      }
    }
 }
