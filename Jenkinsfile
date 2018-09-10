@@ -3,16 +3,14 @@ node {
        echo 'Inside of First Step Stage!!!'
        stage('run-parallel-branches') {
            def stepsToRun = [:]
-           for (int i = 1; i < 5; i++) {
+           for (int i = 1; i < 3; i++) {
              stepsToRun["Step${i}"] = { node {
                 echo "start"
-                sleep 2
                 echo "done"
              }}
            }
        parallel stepsToRun
-       }
-       input 'Do you want to deploy?'  
+       } 
    }
    stage('External library!') {
         // echo "Testing if external library works!"
