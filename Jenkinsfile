@@ -1,10 +1,6 @@
 node {
-   stage ('checkout SCM') {
-        echo 'Get the code!!!!'
-        git 'https://github.com/rolandhalokh/onlytest.git'
-   }
-   stage ('Test and Deploy') {
-       echo 'Inside of Second Stage!!!'
+   stage ('First Step') {
+       echo 'Inside of First Step Stage!!!'
        stage('run-parallel-branches') {
            def stepsToRun = [:]
            for (int i = 1; i < 5; i++) {
@@ -18,7 +14,9 @@ node {
        }
        input 'Do you want to deploy?'  
    }
-   stage('Deployment stage!') {
-         echo "Lets DEPLOY!"
+   stage('External library!') {
+         echo "Testing if external library works!"
+         def newUtils = new org.utils.myUtils()
+         newUtils.echoStuff("Echoing the stuff inside my method!!!")
    }
 }
