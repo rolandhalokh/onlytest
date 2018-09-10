@@ -1,3 +1,5 @@
+import org.utils.myUtils
+
 node {
    stage ('First Stage') {
        echo 'Inside of First Stage!!!'
