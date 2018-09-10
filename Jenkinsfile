@@ -13,8 +13,8 @@ node {
        } 
    }
    stage('Test Library Stage') {
-        // echo "Testing if external library works!"
-        // def newUtils = new org.utils.myUtils()
-        // newUtils.echoStuff("Echoing the stuff inside my method!!!")
+         echo "Testing if external library works!"
+         def newUtils = new org.utils.myUtils()
+         newUtils.echoStuff("Echoing the stuff inside my method!!!")
    }
 }
