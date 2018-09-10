@@ -1,6 +1,6 @@
 node {
-   stage ('First Step') {
-       echo 'Inside of First Step Stage!!!'
+   stage ('First Stage') {
+       echo 'Inside of First Stage!!!'
        stage('run-parallel-branches') {
            def stepsToRun = [:]
            for (int i = 1; i < 3; i++) {
@@ -12,7 +12,7 @@ node {
        parallel stepsToRun
        } 
    }
-   stage('External library!') {
+   stage('Test Library Stage') {
         // echo "Testing if external library works!"
         // def newUtils = new org.utils.myUtils()
         // newUtils.echoStuff("Echoing the stuff inside my method!!!")
