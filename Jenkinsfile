@@ -6,7 +6,7 @@ node {
            for (int i = 1; i < 5; i++) {
              stepsToRun["Step${i}"] = { node {
                 echo "start"
-                sleep 5
+                sleep 2
                 echo "done"
              }}
            }
@@ -15,8 +15,8 @@ node {
        input 'Do you want to deploy?'  
    }
    stage('External library!') {
-         echo "Testing if external library works!"
-         def newUtils = new org.utils.myUtils()
-         newUtils.echoStuff("Echoing the stuff inside my method!!!")
+        // echo "Testing if external library works!"
+        // def newUtils = new org.utils.myUtils()
+        // newUtils.echoStuff("Echoing the stuff inside my method!!!")
    }
 }
