@@ -1,5 +1,5 @@
-@Library(value="utilities-portal-library@master", changelog=false)
-import org.utils.myUtils
+@Library("utilities-portal-library")
+import org.utils.*
 
 node {
    stage ('First Stage') {
