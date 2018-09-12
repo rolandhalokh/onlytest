@@ -1,5 +1,5 @@
-@Library('utilities-portal-library/master')_
-import org.utils.*
+@Library('bldtools') import org.conf.buildUtils.*
+def bldtools = new buildUtils(steps)
 
 node {
    stage ('First Stage') {
@@ -17,7 +17,7 @@ node {
    }
    stage('Test Library Stage') {
          echo "Testing if external library works!"
-         def newUtil = new org.utils.myUtils()
-         newUtil.echoStuff("Echoing the stuff inside my method!!!")
+         git "<gradle project to clone>"
+         bldtools.timedGradleBuild 'clean build'
    }
 }
