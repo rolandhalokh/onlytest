@@ -17,8 +17,8 @@ node {
    }
    stage('Test Library Stage') {
          echo "Testing if external library works!"
-         def myUtils = new org.demo.buildUtils()
-         git "<gradle project to clone>"
-         myUtils.timedGradleBuild("clean build")
+
+         def podname = org.demo.generatePodname("salala")
+         echo "${podname}"
    }
 }
