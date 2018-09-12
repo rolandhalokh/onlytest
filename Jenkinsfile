@@ -1,4 +1,7 @@
-@Library('bldtools') import org.conf.buildUtils.*
+// @Library('bldtools') 
+@Library(value="utilities-portal-library@master", changelog=false)
+import org.conf.buildUtils.*
+
 def bldtools = new buildUtils(steps)
 
 node {
