@@ -18,7 +18,11 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
-         def podname = buildUtils.generatePodname("salala")
-         echo "${podname}"
+         Student st = new Student();
+         st.StudentID = 1;
+         st.StudentName = "Joe"
+
+         echo st.StudentID
+         echo st.StudentName
    }
 }
