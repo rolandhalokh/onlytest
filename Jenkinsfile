@@ -1,8 +1,6 @@
 @Library(value="utilities-portal-library@master", changelog=false)
 import org.conf.buildUtils.*
 
-def bldtools = new buildUtils(steps)
-
 node {
    stage ('First Stage') {
        echo 'Inside of First Stage!!!'
