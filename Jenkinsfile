@@ -19,7 +19,8 @@ node {
    }
    stage('Test Library Stage') {
          echo "Testing if external library works!"
+         def myUtils = new org.demo.buildUtils()
          git "<gradle project to clone>"
-         bldtools.timedGradleBuild 'clean build'
+         myUtils.timedGradleBuild("clean build")
    }
 }
