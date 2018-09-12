@@ -18,7 +18,7 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
-         def podname = org.conf.generatePodname("salala")
+         def podname = buildUtils.generatePodname("salala")
          echo "${podname}"
    }
 }
