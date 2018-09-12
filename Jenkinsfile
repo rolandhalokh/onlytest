@@ -1,5 +1,5 @@
 @Library(value="utilities-portal-library@master", changelog=false)
-import org.conf.buildUtils.*
+import org.conf.buildUtils.groovy
 
 def bldtools = new buildUtils(steps)
 
