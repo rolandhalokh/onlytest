@@ -18,6 +18,6 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
-         def fuckinStudent = Student()
+         def fStudent = Student()
    }
 }
