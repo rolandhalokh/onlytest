@@ -18,9 +18,9 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
-         Employee empl = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
-         println(empl.firstName)
-         println(empl.lastName)
-         println(empl.salary)
+         Employee employee = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
+         println(employee.firstName)
+         println(employee.lastName)
+         println(employee.salary)
    }
 }
