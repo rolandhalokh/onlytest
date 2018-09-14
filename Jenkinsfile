@@ -1,5 +1,5 @@
 @Library(value="utilities-portal-library@master", changelog=false)
-import org.conf.buildUtils.*
+import org.conf.*
 
 node {
    stage ('First Stage') {
@@ -18,9 +18,9 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
-         Employee employee = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
-         println(employee.firstName)
-         println(employee.lastName)
-         println(employee.salary)
+         // Employee employee = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
+         // println(employee.firstName)
+         // println(employee.lastName)
+         // println(employee.salary)
    }
 }
