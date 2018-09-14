@@ -1,4 +1,4 @@
-@Library(value="utilities-portal-library@master", changelog=false)
+@Library(value="library@master", changelog=false)
 import org.conf.*
 
 node {
