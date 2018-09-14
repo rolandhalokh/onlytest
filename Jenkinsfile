@@ -1,4 +1,4 @@
-@Library(value="library@master", changelog=false)
+@Library(value="library@master", changelog=false) _
 import org.conf.*
 
 node {
