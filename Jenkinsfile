@@ -1,6 +1,6 @@
-//@Library(value="library@master", changelog=false) _
+@Library('library')_
 //import org.conf.*
-library 'library'
+//library 'library'
 
 node {
    stage ('First Stage') {
@@ -19,10 +19,11 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
-         imakeit 'Roland'
-         employee1 = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
-         println(employee1.firstName)
-         println(employee1.lastName)
-         println(employee1.salary)
+         //imakeit 'Roland'
+
+         def myUtils = new org.conf.buildUtils()
+         myUtils.showIt 'Welcome home!!'
+         
+
    }
 }
