@@ -1,5 +1,6 @@
-@Library(value="library@master", changelog=false) _
-import org.conf.*
+//@Library(value="library@master", changelog=false) _
+//import org.conf.*
+library 'library'
 
 node {
    stage ('First Stage') {
@@ -18,6 +19,7 @@ node {
    stage('Test Library Stage') {
          echo "Testing if external library works!"
 
+         hello 'John'
         // Employee employee1 = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
         // println(employee1.firstName)
         // println(employee1.lastName)
