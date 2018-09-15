@@ -20,7 +20,7 @@ node {
          echo "Testing if external library works!"
 
          imakeit 'Roland'
-         Employee employee1 = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
+         employee1 = new Employee(firstName:"John", lastName:"Doe", salary:"20000")
          println(employee1.firstName)
          println(employee1.lastName)
          println(employee1.salary)
